@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main role="main">
+
+
+	<section class="bg-gray200 pt-5 pb-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-7">
+					<article class="card">
+						<img class="card-img-top mb-2"
+							 src="{{post.img.url}}"
+							 alt="Card image">
+						<div class="card-body">
+							<h1 class="card-title display-4">
+								{{post.title}} </h1>
+							<p>{{post.description}}</p>
+
+
+							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{{post.user.url}}"><i
+									class="fa fa-external-link"></i> {{post.user}}</a></small>
+							<!-- Begin Comments -replace demowebsite with your own id
+                            ================================================== -->
+							<div id="comments" class="mt-4">
+
+							</div>
+							<!--End Comments
+                            ================================================== -->
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid mt-5">
+			<div class="row">
+				<h5 class="font-weight-bold">More like this</h5>
+				<div class="card-columns">
+					{% for like_post in popular_posts %}
+					<div class="card card-pin">
+						<img class="card-img"
+							 src="https://images.unsplash.com/photo-1518450757707-d21c8c53c8df?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c88b5f311958f841525fdb01ab3b5deb&auto=format&fit=crop&w=500&q=60"
+							 alt="Card image">
+						<div class="overlay">
+							<h2 class="card-title title">Some Title</h2>
+							<div class="more">
+								<a href="post.html">
+									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+{% endblock %}

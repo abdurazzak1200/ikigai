@@ -9,5 +9,5 @@ class Profile(models.Model):
     inst = models.URLField('Инстаграм', max_length=300, blank=True, null=True)
 
     def __str__(self):
-        return self.user
+        return f"{self.user}'s profile"
 
