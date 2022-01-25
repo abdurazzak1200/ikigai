@@ -47,6 +47,7 @@
 					<span class="align-middle">{{request.user.username}}</span>
 				</a>
 				{% else %}
+				<a href="" class="nav-item">Login</a>
 				{% endif %}
 
 			</li>
@@ -56,7 +57,7 @@
 				</a>
 				<div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdown02">
 					<a class="nav-link" href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
-					<a class="nav-link" href="{% url 'post-create' %}"><span class="align-middle">Мои посты</span></a>
+					<a class="nav-link" href=""><span class="align-middle">Мои посты</span></a>
 
 				</div>
 			</li>
