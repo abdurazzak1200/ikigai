@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{%block title%}post - {{post.title}}{% endblock %}
 {% block content %}
 <main role="main">
 
@@ -40,12 +41,12 @@
 					{% for like_post in popular_posts %}
 					<div class="card card-pin">
 						<img class="card-img"
-							 src="https://images.unsplash.com/photo-1518450757707-d21c8c53c8df?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c88b5f311958f841525fdb01ab3b5deb&auto=format&fit=crop&w=500&q=60"
+							 src="{{like_post.img.url}}"
 							 alt="Card image">
 						<div class="overlay">
-							<h2 class="card-title title">Some Title</h2>
+							<h2 class="card-title title">{{like_post.title}}</h2>
 							<div class="more">
-								<a href="post.html">
+								<a href="{%url 'detail_post' like_post.id%}">
 									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
 							</div>
 						</div>

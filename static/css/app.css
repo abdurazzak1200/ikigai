@@ -7167,7 +7167,8 @@ button.bg-gray200:focus {
 
 /* line 53, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-circle {
-  border-radius: 50% !important; }
+  border-radius: 50% important!; }
+
 
 /* line 57, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-0 {

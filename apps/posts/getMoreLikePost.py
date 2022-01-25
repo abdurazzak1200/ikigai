@@ -3,6 +3,6 @@ from .models import Post
 from datetime import datetime, timedelta
 
 def get_popular_post(request):
-    posts = Post.objects.filter(created=datetime.now()-timedelta(days=7))
+    posts = Post.objects.filter()
     context = {'popular_posts': posts}
     return context

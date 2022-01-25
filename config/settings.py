@@ -64,6 +64,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'posts.get_categoryes.get_categoryes',
                 'posts.getMoreLikePost.get_popular_post',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
