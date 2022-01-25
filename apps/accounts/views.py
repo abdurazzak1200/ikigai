@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import Profile
+from posts.models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -35,10 +37,22 @@ class RegisterPage(FormView):
             return redirect('index')
         return super(RegisterPage, self).get(*args, **kwargs)
 
+class UpdateProfileView(UpdateView):
+    model = Profile
+    fields = ['image', 'bio', 'inst']
+    success_url = reverse_lazy('index')
+
+class ProfileDetailView(DetailView):
+    model = User
+    template_name = 'accounts/author.html'
+    context_object_name = 'author'
+    def get_context_data(self, **kwargs):
+        context = super(ProfileDetailView, self).get_context_data()
+        profile_posts = Post.objects.filter(archived=False, user=self.object.id)
+        context['profile_posts'] = profile_posts
+        return context
+
 def update_profile(request, user_id):
     user = User.objects.get(pk=user_id)
-    user.profile.image = ''
-    user.profile.inst = ''
-    user.profile.bio = ''
     user.save()
 

@@ -19,7 +19,7 @@
 							<p>{{post.description}}</p>
 
 
-							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{{post.user.url}}"><i
+							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'detail-profile' post.user.id %}"><i
 									class="fa fa-external-link"></i> {{post.user}}</a></small>
 							{% if request.user.is_authenticated %}
 								{% if request.user.username == post.user %}

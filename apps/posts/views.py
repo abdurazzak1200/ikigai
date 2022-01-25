@@ -6,7 +6,7 @@ from .models import Post, Category
 from django.shortcuts import get_object_or_404
 
 
-class AllPostView(ListView):
+class AllPostView(LoginRequiredMixin, ListView):
     template_name = 'index.html'
     model = Post
     context_object_name = 'posts'
@@ -23,14 +23,14 @@ class AllPostView(ListView):
 
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     template_name = 'post.html'
     model = Post
     context_object_name = 'post'
 
 
 
-class PostCreatedView(CreateView):
+class PostCreatedView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['category', 'img', 'title', 'description', 'archived']
     success_url = reverse_lazy('index')

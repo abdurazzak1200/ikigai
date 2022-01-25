@@ -35,8 +35,9 @@
 			<li class="nav-item">
 				{% if request.user.is_authenticated %}
 				<span class="nav-link">
+					<a href="{% url 'detail-profile' user.id %}">
 					<div class="img_block align-middle" style="
-					background: url();
+					background: url({{ user.profile.image.url }});
 					width:40px;
 					height:40px;
 					display: inline-block;
@@ -44,7 +45,8 @@
 					background-size: cover;
 					border-radius: 100%;
 					"></div>
-					<span class="align-middle">{{request.user.username}}</span>
+					<span class="align-middle">{{user.username}}</span>
+					</a>
 				</span>
 				{% else %}
 				<a href="{% url 'login' %}" class="nav-item">Login</a>
@@ -56,10 +58,14 @@
 					<svg style="margin-top:10px;" class="_3DJPT" version="1.1" viewbox="0 0 32 32" width="21" height="21" aria-hidden="false" data-reactid="71"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z" data-reactid="22"></path></svg>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdown02">
+
+					{% if request.user.is_authenticated %}
 					<a class="nav-link" href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
 					<a class="nav-link" href=""><span class="align-middle">Мои посты</span></a>
+					<a class="nav-link" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Мой профиль</span></a>
 
 					<a class="nav-link" href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
+					{% endif %}
 
 				</div>
 			</li>
