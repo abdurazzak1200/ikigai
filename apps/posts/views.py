@@ -37,3 +37,5 @@ class PostCreatedView(CreateView):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
 
+#TODO Сделать view редактирования поста
+

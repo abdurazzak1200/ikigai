@@ -21,6 +21,12 @@
 
 							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{{post.user.url}}"><i
 									class="fa fa-external-link"></i> {{post.user}}</a></small>
+							{% if request.user.is_authenticated %}
+								{% if request.user.username == post.user %}
+									<small class="d-block"><a class="btn btn-sm btn-gray200" href="{{post.user.url}}"><i
+									class="fa fa-external-link"></i> Редактировать </a></small>
+								{% endif %}
+							{% endif %}
 							<!-- Begin Comments -replace demowebsite with your own id
                             ================================================== -->
 							<div id="comments" class="mt-4">
@@ -52,6 +58,7 @@
 						</div>
 					</div>
 					{% endfor %}
+
 				</div>
 			</div>
 		</div>
