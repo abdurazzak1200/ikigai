@@ -21,6 +21,8 @@ class AllPostView(ListView):
         queryset = self.model.objects.filter(archived=False)
         return queryset
 
+
+
 class PostDetailView(DetailView):
     template_name = 'post.html'
     model = Post
