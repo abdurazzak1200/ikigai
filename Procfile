@@ -1,0 +1,1 @@
+web: qunicorn config.wsgi --log-file -
