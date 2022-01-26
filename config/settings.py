@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'pinterest_list',
         'PASSWORD': 'admin',
         'USER': 'user_pinterest',
-        'HOST': '127.0.0.1',
+        'HOST': ['ikigaibish.herokuapp.com', '127.0.0.1'],
         'PORT': '5434',
     }
 }
