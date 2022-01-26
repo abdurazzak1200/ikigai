@@ -16,7 +16,7 @@ class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
     img = models.ImageField('Фото поста', upload_to='post-image/', max_length=100)
     description = models.TextField('Описание')
-    likes = models.ManyToManyField(User, related_name="likes")
+    likes = models.ManyToManyField(User, related_name="likes",blank=True)
     archived = models.BooleanField('Архив', default=False)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
