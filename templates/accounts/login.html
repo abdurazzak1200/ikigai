@@ -4,14 +4,14 @@
 
 
     <section class="mt-4 mb-5">
-        <div class="container mb-4">
+        <div style="text-align:center" class="container mb-4">
             <h1 class="font-weight-bold title">Войти</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <input type="submit" value="Login">
             </form>
-            <h5>У вас нет аккаунта? <a href="{% url 'register' %}">Регистрация</a></h5>
+            <h5 style="margin-top: 3rem">У вас нет аккаунта? <a href="{% url 'register' %}">Регистрация</a></h5>
         </div>
     </section>
 

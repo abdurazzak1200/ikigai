@@ -6,10 +6,13 @@ class Category(models.Model):
     slug = models.SlugField('Slug', max_length=100, unique=True)
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name = 'Категорию'
+        verbose_name_plural = 'Категории'
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Категория')
     title = models.CharField('Заголовок', max_length=200)
     img = models.ImageField('Фото поста', upload_to='post-image/', max_length=100)
     description = models.TextField('Описание')
@@ -33,3 +36,8 @@ class Comment(models.Model):
     comment = models.CharField('Комментарии', max_length=250)
     def __str__(self):
         return f'{self.user}:{self.comment}'
+
+    class Meta:
+        ordering = ['-commented_time']
+        verbose_name = 'Коммент'
+        verbose_name_plural = 'Комменты'

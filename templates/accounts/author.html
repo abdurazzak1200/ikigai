@@ -6,15 +6,30 @@
 	<div class="jumbotron border-round-0 min-50vh" style="background-image:url(https://images.unsplash.com/photo-1522204657746-fccce0824cfd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=84b5e9bea51f72c63862a0544f76e0a3&auto=format&fit=crop&w=1500&q=80);">
 	</div>
 	<div class="container mb-4">
-		<img src="{{author.profile.image.url}}" class="mt-neg100 mb-4 rounded-circle" width="128">
+		<div class="" style="
+					background: url({{ user.profile.image.url }});
+					width:170px;
+					height:170px;
+					display: inline-block;
+					background-position: center;
+					background-size: cover;
+					border-radius: 100%;
+					margin-top: -125px;
+					"></div>
 		<h1 class="font-weight-bold title">{{author.username}}</h1>
 		<p>
+			{% if author.profile.bio %}
 			{{author.profile.bio}}
+			{% else %}
+			Биография отсутствует ...
+			{% endif %}
+
 		</p>
 	</div>
 	<div class="container-fluid mb-5">
 		<div class="row">
 			<div class="card-columns">
+				{% if profile_posts %}
 				{% for profile_post in profile_posts %}
 				<div class="card card-pin">
 					<img class="card-img" src="{{ profile_post.img.url }}" alt="Card image">
@@ -27,6 +42,9 @@
 					</div>
 				</div>
 				{% endfor %}
+				{% else %}
+				<h5 style="margin-left: 4rem">Посты отсутствуют</h5>
+				{% endif %}
 			</div>
 		</div>
 	</div>

@@ -14,6 +14,7 @@
 							 src="{{post.img.url}}"
 							 alt="Card image">
 						<div class="card-body">
+							<p>Категории: <a style="text-decoration:none;" href="{% url 'category_list' post.category.slug %}">{{post.category}}</a></p>
 							<h1 class="card-title display-4">
 								{{post.title}} </h1>
 							<p>{{post.description}}</p>
@@ -42,7 +43,7 @@
 
 		<div class="container-fluid mt-5">
 			<div class="row">
-				<h5 class="font-weight-bold">More like this</h5>
+				<h5 class="font-weight-bold">Похожие посты</h5>
 				<div class="card-columns">
 					{% for like_post in popular_posts %}
 					<div class="card card-pin">
@@ -53,7 +54,7 @@
 							<h2 class="card-title title">{{like_post.title}}</h2>
 							<div class="more">
 								<a href="{%url 'detail_post' like_post.id%}">
-									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
+									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Подробнее </a>
 							</div>
 						</div>
 					</div>

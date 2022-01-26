@@ -4,9 +4,9 @@
 
 
     <section class="mt-4 mb-5">
-        <div class="container mb-4">
+        <div style="text-align:center" class="container mb-4">
             <h1 class="font-weight-bold title">Регистрация</h1>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form class="register_form" action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <input type="submit" value="Зарегаться">

@@ -7,7 +7,7 @@
 
 	<section class="mt-4 mb-5">
 		<div class="container mb-4">
-			<h1 class="font-weight-bold title">Explore</h1>
+			<h1 class="font-weight-bold title"></h1>
 			<div class="row">
 				<nav class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
 					<button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExplore" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +34,39 @@
 					{% for post in posts %}
 					<div class="card card-pin">
 						<img class="card-img" src="{{post.img.url}}" alt="Card image">
-						<div class="overlay">
+						<div style="height: 75%;" class="overlay">
 							<h2 class="card-title title">{{post.title}}</h2>
 							<div class="more">
 								<a href="{% url 'detail_post' post.id %}">
 									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
 							</div>
 						</div>
+						<div class="card-info">
+							<span class="nav-link">
+								<a style="text-decoration: none;" href="{% url 'detail-profile' post.user.id %}">
+								<div class="img_block align-middle" style="
+								background: url({{ post.user.profile.image.url }});
+								width:40px;
+								height:40px;
+								display: inline-block;
+								background-position: center;
+								background-size: cover;
+								border-radius: 100%;
+								"></div>
+								<span class="align-middle">
+								{% if post.user.profile.inst %}
+									<a style="text-decoration: none;" href="{{post.user.profile.inst}}">instagram.com</a>
+								{% else %}
+									{{post.user.username}}
+								{% endif %}
+								</span>
+								</a>
+							</span>
 					</div>
+					</div>
+
+
+
 					{% endfor %}
 				</div>
 			</div>

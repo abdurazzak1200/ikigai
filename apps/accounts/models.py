@@ -12,6 +12,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user}'s profile"
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
 
 
 @receiver(post_save, sender=User)
