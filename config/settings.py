@@ -26,9 +26,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'django-insecure-y6xbkjkfz-(wehbf=3vuh@ev9w$86-@h6eyei$211b@^1*kfsb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ikigaibish.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -42,11 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
+    'custom.apps.CustomConfig',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,7 +91,7 @@ DATABASES = {
         'NAME': 'pinterest_list',
         'PASSWORD': 'admin',
         'USER': 'user_pinterest',
-        'HOST': '127.0.0.1',
+        'HOST': ['ikigaibish.herokuapp.com', '127.0.0.1'],
         'PORT': '5434',
     }
 }
@@ -129,10 +133,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = 'static_dep'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "staticfile")
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

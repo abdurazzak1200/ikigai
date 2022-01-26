@@ -2,14 +2,19 @@
 {% load static %}
 {%block title%}Home{% endblock %}
 {% block content %}
-<main role="main">
+<main style=" height:100%;" role="main">
 
 
-	<section class="mt-4 mb-5">
+	<section style="background: url({% static 'img/bg.jpeg' %});
+	height:100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	" class="mt-4 mb-5">
 		<div class="container mb-4">
 			<h1 class="font-weight-bold title"></h1>
 			<div class="row">
-				<nav class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
+				<nav style="border-radius: 6px 6px 15px 15px;" class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
 					<button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExplore" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -19,7 +24,7 @@
 								<a class="nav-link" href="{% url 'index' %}">All</a>
 							</li>
 							{% for category in categoryes %}
-							<li class="nav-item">
+							<li style="color:#fff;" class="nav-item">
 								<a class="nav-link" href="{% url 'category_list' category.slug %}">{{category.name}}</a>
 							</li>
 							{% endfor %}
@@ -38,7 +43,7 @@
 							<h2 class="card-title title">{{post.title}}</h2>
 							<div class="more">
 								<a href="{% url 'detail_post' post.id %}">
-									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
+									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Подробнее </a>
 							</div>
 						</div>
 						<div class="card-info">

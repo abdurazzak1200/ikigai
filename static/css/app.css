@@ -51,6 +51,11 @@
           box-sizing: border-box; }
 
 /* line 27, node_modules/bootstrap/scss/_reboot.scss */
+html, body {
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0}
 html {
   font-family: sans-serif;
   line-height: 1.15;

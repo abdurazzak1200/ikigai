@@ -29,12 +29,9 @@
 				</div>
 			</form>
 		</ul>
-		<ul class="navbar-nav ml-auto align-items-center">
+		<ul style="border-radius:10%;" class="navbar-nav ml-auto align-items-right">
+			{% if request.user.is_authenticated %}
 			<li class="nav-item">
-				<a class="nav-link active" href="{% url 'index' %}">Home</a>
-			</li>
-			<li class="nav-item">
-				{% if request.user.is_authenticated %}
 				<span class="nav-link">
 					<a href="{% url 'detail-profile' user.id %}">
 					<div class="img_block align-middle" style="
@@ -49,9 +46,18 @@
 					<span class="align-middle">{{user.username}}</span>
 					</a>
 				</span>
-				{% else %}
+			</li>
+			{% endif %}
+		</ul>
+		<ul class="navbar-nav ml-auto align-items-center">
+			{% if request.user.is_authenticated %}
+
+			<li class="nav-item">
+
+
+			{% else %}
 				<a href="{% url 'login' %}" class="nav-item">Login</a>
-				{% endif %}
+			{% endif %}
 
 			</li>
 			<li class="nav-item dropdown">
