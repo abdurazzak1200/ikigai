@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'pinterest_list',
         'PASSWORD': 'admin',
         'USER': 'user_pinterest',
-        'HOST': ['ikigaibish.herokuapp.com', '127.0.0.1'],
+        'HOST': '127.0.0.1',
         'PORT': '5434',
     }
 }
@@ -136,7 +136,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfile")
+    os.path.join(BASE_DIR, "staticfiles")
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
