@@ -41,3 +41,5 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
 
 #TODO Сделать view редактирования поста
 
+class Coasdjkl():
+    model = Post
