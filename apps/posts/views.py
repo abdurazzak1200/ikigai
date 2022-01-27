@@ -43,3 +43,6 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView():
     model = Post
+
+class Coasdjkl():
+    model = Post
