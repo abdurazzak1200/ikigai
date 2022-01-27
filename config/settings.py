@@ -90,7 +90,7 @@ DATABASES = {
         'PASSWORD': 'admin',
         'USER': 'user_pinterest',
         'HOST': '127.0.0.1',
-        'PORT': '5434',
+        'PORT': '5432',
     }
 }
 
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
