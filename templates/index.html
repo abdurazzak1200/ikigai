@@ -37,16 +37,20 @@
                 <div class="card-columns">
                     {% for post in posts %}
                     <div class="card card-pin">
-                        <img class="card-img" src="{{post.img.url}}" alt="Card image">
-                        <div style="height: 75%;" class="overlay">
-                            <h2 class="card-title title">{{post.title}}</h2>
-                            <div class="more">
-                                <a href="{% url 'detail_post' post.id %}">
-                                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Подробнее </a>
-                            </div>
-                        </div>
+                        <a href="{% url 'detail_post' post.id %}">
+                            <img class="card-img" src="{{post.img.url}}" alt="Card image">
+                        </a>
+
+<!--                        <div style="height: 75%;" class="overlay">-->
+<!--                            <h2 class="card-title title">{{post.title}}</h2>-->
+<!--                            <div class="more">-->
+<!--                                <a href="{% url 'detail_post' post.id %}">-->
+<!--                                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Подробнее </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="card-info">
 							<span class="nav-link">
+                                <h6>{{post.title}}</h6>
 								<a style="text-decoration: none;" href="{% url 'detail-profile' post.user.id %}">
 								<div class="img_block align-middle" style="
 								background: url({{ post.user.profile.image.url }});
