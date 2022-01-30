@@ -61,15 +61,11 @@
 
 			</li>
 
-<!--			<li class="nav-item">-->
-<!--					{% if request.user.is_authenticated %}-->
-<!--					<a class="nav-link" href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>-->
-<!--					<a class="nav-link" href=""><span class="align-middle">Мои посты</span></a>-->
-<!--					<a class="nav-link" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Мой профиль</span></a>-->
+			<li class="nav-item">
+					{% if request.user.is_authenticated %}
 
-<!--					<a class="nav-link" href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>-->
-<!--					{% endif %}-->
-<!--			</li>-->
+					{% endif %}
+			</li>
 		</ul>
 	</div>
 </nav>

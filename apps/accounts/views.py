@@ -39,7 +39,7 @@ class RegisterPage(FormView):
 
 class UpdateProfileView(UpdateView):
     model = Profile
-    fields = ['image', 'bio', 'inst']
+    fields = ['bg', 'image', 'bio', 'inst']
     success_url = reverse_lazy('index')
 
 class ProfileDetailView(DetailView):

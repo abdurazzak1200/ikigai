@@ -10,6 +10,7 @@ class AllPostView(LoginRequiredMixin, ListView):
     template_name = 'index.html'
     model = Post
     context_object_name = 'posts'
+    paginate_by = 20
     def get_queryset(self):
         category_slug = self.kwargs.get('category_slug')
         if category_slug:

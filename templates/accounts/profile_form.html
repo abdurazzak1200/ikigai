@@ -4,7 +4,7 @@
 
     <section class="mt-4 mb-5">
         <div class="container mb-4">
-            <a href="{% url 'index' %}"> <- Назад</a>
+            <a href="{% url 'detail-profile' user.id %}"> <- Назад</a>
             <h1 class="font-weight-bold title">Update profile</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}

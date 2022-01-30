@@ -6,11 +6,11 @@
     <section class="mt-4 mb-5">
         <div style="text-align:center" class="container mb-4">
             <a  href="{% url 'detail-profile' user.id %}"> <- Назад</a>
-            <h1 class="font-weight-bold title">Добавить пост</h1>
+            <h1 class="font-weight-bold title">Кастомизация сайта</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" value="Запостить">
+                <input type="submit" value="Кастом">
             </form>
         </div>
     </section>

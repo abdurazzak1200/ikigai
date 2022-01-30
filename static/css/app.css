@@ -559,7 +559,7 @@ pre {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: 2.5rem; }
   @media (min-width: 576px) {
     /* line 6, node_modules/bootstrap/scss/_grid.scss */
     .container {
