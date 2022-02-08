@@ -6,8 +6,8 @@ from .models import Custom
 
 
 
-class UpdateCustomView(UpdateView):
-    model = Custom
-    fields = ['custom_bg']
-    context_object_name = 'custom'
-    success_url = reverse_lazy('index')
+# class UpdateCustomView(UpdateView):
+#     model = Custom
+#     fields = ['custom_bg']
+#     context_object_name = 'custom'
+#     success_url = reverse_lazy('index')

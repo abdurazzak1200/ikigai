@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}login{% endblock %}
+{% block title %}Добавить категории{% endblock %}
 {% block content %}
 <main style="margin-top:7rem;" role="main">
 
 
     <section class="mt-4 mb-5">
         <div style="text-align:center" class="container mb-4">
-            <h1 class="font-weight-bold title">Войти</h1>
+            <a  href="{% url 'detail-profile' user.id %}"> <- Назад</a>
+            <h1 class="font-weight-bold title">Добавить категорию</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" value="Войти">
+                <input type="submit" value="Запостить">
             </form>
-            <h5 style="margin-top: 3rem">У вас нет аккаунта? <a href="{% url 'register' %}">Регистрация</a></h5>
         </div>
     </section>
 

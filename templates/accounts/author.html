@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %} {{author.username}}{% endblock %}
 {% block content %}
 <main role="main">
 
@@ -45,10 +46,14 @@
 		</p>
 		{% if author.profile.id == user.profile.id  %}
 		<div style="text-align:center" class="right">
+			{% if author.username == 'admin' %}
+			<a  href="{% url 'category-create' %}"><span class="align-middle">
+				Добавить категории
+			</span></a>
+			{% endif %}
 			<a style="margin-right: 1rem;margin-left: 1rem"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
 			<a style="margin-right: 1rem" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
 
-			<a style="margin-right: 1rem" href="{% url 'update-custom' custom.id %}"><span class="align-middle">Кастомизация сайта</span></a>
 			<a  href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
 		</div>
 		{% endif %}

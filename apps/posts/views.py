@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post, Category
 from django.shortcuts import get_object_or_404
+from django.contrib import admin
 
 
 class AllPostView(LoginRequiredMixin, ListView):
@@ -39,6 +40,15 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
+
+class CategoryCreatedView(LoginRequiredMixin, CreateView):
+    model = Category
+    fields = ['name', 'slug']
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CategoryCreatedView, self).form_valid(form)
 
 #TODO Сделать view редактирования поста
 
