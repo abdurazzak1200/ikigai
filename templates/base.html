@@ -51,20 +51,17 @@
 		</ul>
 		<ul class="navbar-nav align-items-center">
 			{% if request.user.is_authenticated %}
-
 			<li class="nav-item">
-
-
-			{% else %}
+				{% else %}
 				<a href="{% url 'login' %}" class="nav-item">Login</a>
-			{% endif %}
+				{% endif %}
 
 			</li>
 
 			<li class="nav-item">
-					{% if request.user.is_authenticated %}
+				{% if request.user.is_authenticated %}
 
-					{% endif %}
+				{% endif %}
 			</li>
 		</ul>
 	</div>
@@ -73,17 +70,11 @@
 {% block content %}
 
 {% endblock %}
-
-
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/theme.js' %}"></script>
-
 <footer class="footer pt-5 pb-5 text-center">
-
 	<div class="container">
-
 		<div class="socials-media">
-
 			<ul class="list-unstyled">
 				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-facebook"></i></a></li>
 				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-twitter"></i></a></li>
@@ -92,23 +83,12 @@
 				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-behance"></i></a></li>
 				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-dribbble"></i></a></li>
 			</ul>
-
 		</div>
-
-		<!--
-          All the links in the footer should remain intact.
-          You may remove the links only if you donate:
-          https://www.wowthemes.net/freebies-license/
-        -->
 		<p>©  <span class="credits font-weight-bold">
             <a target="_blank" class="text-dark" href="#"><u></u> by Abi&Peri</a>
           </span>
 		</p>
-
-
 	</div>
-
 </footer>
 </body>
-
 </html>

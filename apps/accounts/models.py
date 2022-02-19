@@ -23,7 +23,7 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance, image='user-profile/default.png', bg='user-bg/user-bg.jpeg')
-        Custom.objects.create(user=instance, name='кастом', castom_bg='custom/abi.jpg')
+        Custom.objects.create(user=instance, name='кастом', custom_bg='')
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
