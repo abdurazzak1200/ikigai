@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('posts.urls')),
     path('custom/', include('custom.urls')),
+
 ]
 
 

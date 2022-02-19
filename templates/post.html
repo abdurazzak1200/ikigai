@@ -22,10 +22,11 @@
 
 							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'detail-profile' post.user.id %}"><i
 									class="fa fa-external-link"></i> {{post.user}}</a></small>
+							
 							{% if request.user.is_authenticated %}
-								{% if request.user.username == post.user %}
-									<small class="d-block"><a class="btn btn-sm btn-gray200" href="{{post.user.url}}"><i
-									class="fa fa-external-link"></i> Редактировать </a></small>
+								{% if request.user.id == post.user.id %}
+										<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'edit-post' post.id %}"><i
+									class="fa fa-external-link"></i>edit</a></small>
 								{% endif %}
 							{% endif %}
 							<!-- Begin Comments -replace demowebsite with your own id
@@ -45,7 +46,7 @@
 			<div class="row">
 				<h5 class="font-weight-bold">Похожие посты</h5>
 				<div class="card-columns">
-					{% for like_post in popular_posts %}
+					{% for related_post in related_posts %}
 					<div class="card card-pin">
 						<img class="card-img"
 							 src="{{like_post.img.url}}"

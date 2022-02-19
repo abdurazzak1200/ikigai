@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Category
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 
 class AllPostView(LoginRequiredMixin, ListView):
@@ -29,6 +29,12 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        related_posts = Post.objects.filter(archived=True, category=self.object.category)
+        context["related_posts"] = related_posts[:10] if len(related_posts) > 10 else related_posts
+        return context
+
 
 
 class PostCreatedView(LoginRequiredMixin, CreateView):
@@ -40,5 +46,25 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
 
-#TODO Сделать view редактирования поста
+# TODO Сделать view редактирования поста
 
+# def post_edit(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+#
+#     if request.method == 'GET':
+#         if request.user is not post.author:
+#             return redirect('post', post_id=post.id)
+#         form = PostForm(instance=post)
+#
+#     if request.method == 'POST':
+#         form = PostForm(request.POST, instance=post)
+#         if form.is_valid():
+#             form.save()
+#         return redirect('post', post_id=post.id)
+#
+#     return render(request, 'create_or_update_post.html', {'form': form, 'post': post})
+
+class UpdatePost(UpdateView):
+    model = Post
+    fields = ['category', 'title', 'description', 'archived']
+    success_url = reverse_lazy('index')
