@@ -50,5 +50,5 @@ class CategoryCreatedView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(CategoryCreatedView, self).form_valid(form)
 
-#TODO Сделать view редактирования поста
 
+#TODO Сделать view редактирования поста

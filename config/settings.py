@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
-    'custom.apps.CustomConfig',
 
 ]
 
@@ -66,7 +65,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'posts.get_custom.get_custom',
                 'posts.get_categoryes.get_categoryes',
                 'posts.getMoreLikePost.get_popular_post',
                 'django.template.context_processors.debug',
