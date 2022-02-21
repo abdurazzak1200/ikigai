@@ -1,5 +1,4 @@
 from django.db import models
-from custom.models import Custom
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -23,8 +22,8 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance, image='user-profile/default.png', bg='user-bg/user-bg.jpeg')
-        Custom.objects.create(user=instance, name='кастом', custom_bg='')
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+

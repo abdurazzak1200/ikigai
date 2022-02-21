@@ -42,5 +42,18 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
 
+
 #TODO Сделать view редактирования поста
 
+class CategoryCreatedView(LoginRequiredMixin, CreateView):
+    model = Category
+    fields = ['name', 'slug']
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CategoryCreatedView, self).form_valid(form)
+
+
+
+#TODO Сделать view редактирования поста
