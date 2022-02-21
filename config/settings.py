@@ -89,7 +89,7 @@ DATABASES = {
         'PASSWORD': 'admin',
         'USER': 'user_pinterest',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5434',
     }
 }
 

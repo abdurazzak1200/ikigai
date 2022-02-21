@@ -22,12 +22,22 @@
 
 							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'detail-profile' post.user.id %}"><i
 									class="fa fa-external-link"></i> {{post.user}}</a></small>
-							
+
 							{% if request.user.is_authenticated %}
-								{% if request.user.id == post.user.id %}
-										<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'edit-post' post.id %}"><i
+							{% if request.user.id == post.user.id %}
+							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'edit-post' post.id %}"><i
 									class="fa fa-external-link"></i>edit</a></small>
-								{% endif %}
+							{% endif %}
+							{% endif %}
+							<p>Нравится-{{post.likes.count}}</p>
+							{% if request.user in post.likes.all %}
+							<a href="{% url 'like' post.id %}">
+								<button type="button" class="btn btn-primary">Не нравится</button>
+							</a>
+							{% else %}
+							<a href="{% url 'like' post.id %}">
+								<button type="button" class="btn btn-primary">Нравится</button>
+							</a>
 							{% endif %}
 							<!-- Begin Comments -replace demowebsite with your own id
                             ================================================== -->

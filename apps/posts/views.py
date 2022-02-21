@@ -7,6 +7,16 @@ from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib import admin
 
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.user.is_authenticated:
+        if request.user not in post.likes.all():
+            post.likes.add(request.user)
+            return redirect("detail_post", post.id)
+        else:
+            post.likes.remove(request.user)
+            return redirect("detail_post", post.id)
+    return redirect("login")
 
 class AllPostView(LoginRequiredMixin, ListView):
     template_name = 'index.html'
@@ -55,5 +65,8 @@ class CategoryCreatedView(LoginRequiredMixin, CreateView):
         return super(CategoryCreatedView, self).form_valid(form)
 
 
+class UpdatePost(UpdateView):
+    model = Post
+    fields = ['category', 'title', 'description', 'archived']
+    success_url = reverse_lazy('index')
 
-#TODO Сделать view редактирования поста
