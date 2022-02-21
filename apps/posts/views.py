@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Category
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib import admin
 
@@ -41,6 +42,9 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
 
+
+#TODO Сделать view редактирования поста
+
 class CategoryCreatedView(LoginRequiredMixin, CreateView):
     model = Category
     fields = ['name', 'slug']
@@ -49,6 +53,7 @@ class CategoryCreatedView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CategoryCreatedView, self).form_valid(form)
+
 
 
 #TODO Сделать view редактирования поста

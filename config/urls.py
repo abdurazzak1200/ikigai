@@ -22,6 +22,7 @@ urlpatterns = [
     path('qwerty/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('posts.urls')),
+
 ]
 
 
