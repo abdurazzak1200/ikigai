@@ -1,0 +1,45 @@
+.content {
+    padding: 100px 0;
+    background: url("../images/bg.jpeg") center / cover no-repeat;
+    background-attachment: fixed;
+
+}
+
+.content__row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 15px;
+}
+
+.content__card{
+    width: calc(20% - 24px);
+
+}
+
+.content__card-img{
+    width: 100%;
+}
+
+.content__user {
+    padding: 15px 10px;
+    background: white;
+    margin: -4px 0;
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.content__user-social{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.content-admin {
+    background-color: #e5e5e5;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 720px) {
+
+
+}

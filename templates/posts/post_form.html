@@ -7,11 +7,22 @@
     <section class="mt-4 mb-5">
         <div style="text-align:center" class="container mb-4">
             <a  href="{% url 'detail-profile' user.id %}"> <- Назад</a>
-            <h1 class="font-weight-bold title">Добавить пост</h1>
+            <h1 style="margin:1rem 0;" class="font-weight-bold title">Добавить пост</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" value="Запостить">
+                <input style="
+                        background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        padding: 10px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        border-radius:10px;
+                        margin-top: 2rem;
+                        " type="submit" value="Запостить">
             </form>
         </div>
     </section>

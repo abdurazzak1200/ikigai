@@ -10,7 +10,18 @@
             <form class="register_form" action="" method="POST" enctype="multipart/form-data">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" value="Зарегаться">
+                <input style="
+                        background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        padding: 10px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        border-radius:10px;
+                        margin-top: 2rem;
+                        " type="submit" value="Зарегаться">
             </form>
         </div>
     </section>

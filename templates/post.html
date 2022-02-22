@@ -2,80 +2,109 @@
 {% load static %}
 {%block title%}{{post.title}}{% endblock %}
 {% block content %}
-<main role="main">
+<main>
+    <section class="posts">
+        <div class="container">
+            <div class="posts__content">
+                <div class="posts__card">
+                    <div class="posts__user-social">
+                        <div style="background: url({{post.user.profile.image.url}});
+                        width:40px;
+                        height:40px;
+                        display: inline-block;
+                        background-position: center;
+                        background-size: cover;
+                        border-radius: 100%;
+                        " class="header__admin-image posts__user-image">
+
+                        </div>
+                        <a href="{% url 'detail-profile' post.user.id %}" class="header__admin-link posts__user-link">
+                            {{post.user}}
+                        </a>
+                    </div>
+                    <img class="posts__card-img"
+                         src="{{post.img.url}}" alt="">
+                    <div class="posts__user">
+                        <h2 class="posts__user-cat">
+                            <a href="{% url 'category_list' post.category.slug %}">
+                                Category <span>{{post.category}}</span>
+                            </a>
+                        </h2>
+                        <h3 class="posts__user-title">
+                            {{post.title}}
+                        </h3>
+                        <h4 class="posts__user-subtitle">
+                            {{post.description}}
+                        </h4>
+                        <p>Нравится: {{post.likes.count}}</p>
+                        <div class="posts__review">
+
+                            <a href="{% url 'like' post.id %}" class="posts__like">
+                                <i class="fas fa-thumbs-up"></i>
+                            </a>
+                            <a href="{% url 'like' post.id %}" class="posts__dislike">
+                                <i class="fas fa-thumbs-down"></i>
+                            </a>
+                        </div>
 
 
-	<section class="bg-gray200 pt-5 pb-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-7">
-					<article class="card">
-						<img class="card-img-top mb-2"
-							 src="{{post.img.url}}"
-							 alt="Card image">
-						<div class="card-body">
-							<p>Категории: <a style="text-decoration:none;" href="{% url 'category_list' post.category.slug %}">{{post.category}}</a></p>
-							<h1 class="card-title display-4">
-								{{post.title}} </h1>
-							<p>{{post.description}}</p>
 
 
-							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'detail-profile' post.user.id %}"><i
-									class="fa fa-external-link"></i> {{post.user}}</a></small>
 
-							{% if request.user.is_authenticated %}
-							{% if request.user.id == post.user.id %}
-							<small class="d-block"><a class="btn btn-sm btn-gray200" href="{% url 'edit-post' post.id %}"><i
-									class="fa fa-external-link"></i>edit</a></small>
-							{% endif %}
-							{% endif %}
-							<p>Нравится-{{post.likes.count}}</p>
-							{% if request.user in post.likes.all %}
-							<a href="{% url 'like' post.id %}">
-								<button type="button" class="btn btn-primary">Не нравится</button>
-							</a>
-							{% else %}
-							<a href="{% url 'like' post.id %}">
-								<button type="button" class="btn btn-primary">Нравится</button>
-							</a>
-							{% endif %}
-							<!-- Begin Comments -replace demowebsite with your own id
-                            ================================================== -->
-							<div id="comments" class="mt-4">
+                        <div class="posts__commit">
+                            <div style="width:10%" class="posts__commit-foricon">
+                                <div style="background: url({{post.user.profile.image.url}});
+                                width:40px;
+                                height:40px;
+                                display: inline-block;
+                                background-position: center;
+                                background-size: cover;
+                                border-radius: 100%;
+                                " class="posts__commit-icon">
 
-							</div>
-							<!--End Comments
-                            ================================================== -->
-						</div>
-					</article>
-				</div>
-			</div>
-		</div>
+                                </div>
+                            </div>
+                            <div style="width:90%" class="posts__commit-info">
+                                <p class="posts__commit-user">
+                                    Дыкындыщ ХАХА Хихиев
+                                </p>
+                                <div class="posts__commit-input">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deserunt ex laboriosam molestiae perferendis porro quae quos tenetur, vitae voluptates! Asperiores aspernatur atque aut dolor dolore error exercitationem illo impedit ipsam ipsum pariatur, quasi quod, tempore. Et hic ipsum magnam quis repellendus voluptas. A ab accusamus aperiam assumenda atque aut autem blanditiis consectetur culpa cupiditate delectus deleniti dolore eius, eligendi error eveniet ex illum in magni molestiae, molestias nam non omnis perferendis placeat praesentium quae quaerat recusandae repellendus repudiandae rerum, similique temporibus voluptatum. Aperiam asperiores aspernatur dicta eius eum harum labore nam natus porro quae quo rem, repellat tenetur ullam unde veniam vero voluptatem voluptatibus. Minus pariatur suscipit voluptas voluptatibus. A, ab accusantium animi deserunt doloribus dolorum earum fuga magni maxime officia, quae quo, quod quos. Consequatur eaque fuga hic ipsa, laborum laudantium magni minus natus nisi non nulla obcaecati odio odit porro provident quas quidem quo rem rerum sed sit suscipit tempore. Ab accusamus adipisci aperiam aspernatur consequatur cum dolore eaque earum eius et, facilis harum laudantium nam nisi possimus quod quos repudiandae rerum sit veritatis? Ipsa natus, placeat. Aliquam amet aperiam commodi consequuntur ducimus earum eos et explicabo ipsum, iure libero perferendis recusandae tempora vel velit vitae voluptas.
+                                </div>
+                            </div>
 
-		<div class="container-fluid mt-5">
-			<div class="row">
-				<h5 class="font-weight-bold">Похожие посты</h5>
-				<div class="card-columns">
-					{% for related_post in related_posts %}
-					<div class="card card-pin">
-						<img class="card-img"
-							 src="{{like_post.img.url}}"
-							 alt="Card image">
-						<div class="overlay">
-							<h2 class="card-title title">{{like_post.title}}</h2>
-							<div class="more">
-								<a href="{%url 'detail_post' like_post.id%}">
-									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Подробнее </a>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-
-				</div>
-			</div>
-		</div>
-	</section>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content-admin">
+        <div class="container">
+            <h2 class="content__title">
+                Posts
+            </h2>
+            <div class="content__row">
+                <div class="content__card">
+                    <img class="content__card-img"
+                         src="../../images/electric-circle-with-lightning-effect_97886-3314.webp" alt="">
+                    <div class="content__user">
+                        <h3 class="content__user-title">
+                            2
+                        </h3>
+                        <div class="content__user-social">
+                            <div class="header__admin-image content__user-image">
+                                <img src="" alt="">
+                            </div>
+                            <a href="#" class="header__admin-link content__user-link">
+                                Admin
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 {% endblock %}

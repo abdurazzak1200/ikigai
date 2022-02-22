@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Category
 from django.shortcuts import get_object_or_404, redirect
@@ -18,9 +19,10 @@ def like_post(request, post_id):
             return redirect("detail_post", post.id)
     return redirect("login")
 
-class AllPostView(LoginRequiredMixin, ListView):
+class AllPostView(LoginRequiredMixin, ListView, View):
     template_name = 'index.html'
     model = Post
+    form_class = 1
     context_object_name = 'posts'
     paginate_by = 20
     def get_queryset(self):
@@ -33,6 +35,9 @@ class AllPostView(LoginRequiredMixin, ListView):
             return queryset
         queryset = self.model.objects.filter(archived=False)
         return queryset
+    # def get_context_data(self, **kwargs):
+    #     context = super(AllPostView, self).get_context_data(**kwargs)
+    #     context = ['search_form'] = self.form_class()
 
 
 
@@ -52,8 +57,6 @@ class PostCreatedView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(PostCreatedView, self).form_valid(form)
 
-
-#TODO Сделать view редактирования поста
 
 class CategoryCreatedView(LoginRequiredMixin, CreateView):
     model = Category

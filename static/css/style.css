@@ -1,0 +1,423 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Bitter', serif;
+    font-weight: 300;
+}
+
+.container {
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+a {
+    color: black;
+}
+
+#id_username {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_password {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_password1 {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_password2 {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_name {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_slug {
+    display: block;
+    width: 20%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_category {
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_img {
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_title {
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_description{
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_bg{
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_image{
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_bio{
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+#id_inst{
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+    padding: 3px 6px;
+}
+@media  (max-width: 1000px) {
+
+    #id_username {
+        width: 40%;
+    }
+    #id_password {
+        width: 40%;
+    }
+    #id_password1 {
+        width: 40%;
+    }
+    #id_password2 {
+        width: 40%;
+    }
+    #id_category {
+        width: 40%;
+    }
+    #id_img {
+        width: 40%;
+    }
+    #id_title {
+        width: 40%;
+    }
+    #id_description{
+        width: 40%;
+    }
+
+    #id_bg{
+        width: 40%;
+    }
+    #id_image{
+        width: 40%;
+    }
+    #id_bio{
+        width: 40%;
+    }
+    #id_inst{
+        width: 40%;
+    }
+}
+
+@media  (max-width: 720px) {
+    .header__content-logo {
+        width: 50px;
+    }
+
+    .content__card{
+        width: calc(25% - 22.5px);
+    }
+
+    .admin__background {
+        height: 30vh;
+    }
+    #id_username {
+        width: 70%;
+    }
+    #id_password {
+        width: 70%;
+    }
+    #id_password1 {
+        width: 70%;
+    }
+    #id_password2 {
+        width: 70%;
+    }
+    #id_category {
+        width: 70%;
+    }
+    #id_img {
+        width: 70%;
+    }
+    #id_title {
+        width: 70%;
+    }
+    #id_description{
+        width: 70%;
+    }
+
+    #id_bg{
+        width: 70%;
+    }
+    #id_image{
+        width: 70%;
+    }
+    #id_bio{
+        width: 70%;
+    }
+    #id_inst{
+        width: 70%;
+    }
+}
+
+
+@media  (max-width: 640px) {
+
+
+    .content__card{
+        width: calc(50% - 15px);
+    }
+
+    #id_username {
+        width: 70%;
+    }
+    #id_password {
+        width: 70%;
+    }
+    #id_password1 {
+        width: 70%;
+    }
+    #id_password2 {
+        width: 70%;
+    }
+    #id_category {
+        width: 70%;
+    }
+    #id_img {
+        width: 70%;
+    }
+    #id_title {
+        width: 70%;
+    }
+    #id_description{
+        width: 70%;
+    }
+
+    #id_bg{
+        width: 70%;
+    }
+    #id_image{
+        width: 70%;
+    }
+    #id_bio{
+        width: 70%;
+    }
+    #id_inst{
+        width: 70%;
+    }
+
+}
+
+
+@media (max-width: 567px) {
+    .content__card{
+        width: 100%;
+    }
+    .header__content-img {
+        width: 90%;
+    }
+    .header__content-input {
+        height: 35px;
+    }
+
+    #id_username {
+        width: 80%;
+    }
+    #id_password {
+        width: 80%;
+    }
+    #id_password1 {
+        width: 80%;
+    }
+    #id_password2 {
+        width: 80%;
+    }
+    #id_category {
+        width: 80%;
+    }
+    #id_img {
+        width: 80%;
+    }
+    #id_title {
+        width: 80%;
+    }
+    #id_description{
+        width: 80%;
+    }
+
+    #id_bg{
+        width: 80%;
+    }
+    #id_image{
+        width: 80%;
+    }
+    #id_bio{
+        width: 80%;
+    }
+    #id_inst{
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .content__card{
+        width: 100%;
+    }
+    .header__admin {
+        column-gap: 10px;
+    }
+
+    #id_username {
+        width: 100%;
+    }
+    #id_password {
+        width: 100%;
+    }
+    #id_password1 {
+        width: 100%;
+    }
+    #id_password2 {
+        width: 100%;
+    }
+    #id_category {
+        width: 100%;
+    }
+    #id_img {
+        width: 100%;
+    }
+    #id_title {
+        width: 100%;
+    }
+    #id_description{
+        width: 100%;
+    }
+
+    #id_bg{
+        width: 100%;
+    }
+    #id_image{
+        width: 100%;
+    }
+    #id_bio{
+        width: 100%;
+    }
+    #id_inst{
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .content {
+        background: url("../images/bg.jpeg") left top / 100% 100% no-repeat;
+    }
+    .header__content {
+        display: block;
+    }
+    .header__content-title {
+        position: absolute;
+        left: 58px;
+        top: 10px;
+    }
+    .header__content-input {
+        width: 145px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .header__admin {
+        margin-right: 10px;
+    }
+    .header__admin-image {
+        margin-right: 20px;
+    }
+    .header__list-item{
+        margin-right: 20px;
+    }
+    .header__list-item:last-child{
+        margin-right: 0;
+    }
+    .header__content {
+        display: block;
+    }
+    .header__content-title {
+        position: absolute;
+        left: 58px;
+        top: 10px;
+    }
+    .header__content-input {
+        width: 145px;
+        margin: 10px 0;
+    }
+    .content__card {
+        margin-bottom: 25px;
+    }
+    .content__card:last-child {
+        margin-bottom: 0
+    }
+    .content__user-social {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+    .footer__list-item {
+        margin-right: 30px;
+    }
+    .footer__list-item:last-child {
+        margin-right: 0;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .header__content {
+        display: block;
+    }
+    .header__content-title {
+        position: absolute;
+        left: 58px;
+        top: 10px;
+    }
+    .header__content-input {
+        width: 145px;
+        margin: 10px 0;
+    }
+}
+

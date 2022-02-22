@@ -4,59 +4,36 @@
 Home
 {% endblock %}
 {% block content %}
-<main role="main">
 
 
-
-<!--    {% if user.custom.bg %}-->
-<!--            <section  style="background: url();-->
-<!--            background-size: cover;-->
-<!--            background-attachment: fixed;-->
-<!--            background-repeat: no-repeat;-->
-<!--            " class="mt-4 mb-5">-->
-<!--     {% else %}-->
-            <section  style="background: url({% static 'img/bg.jpeg' %});
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            " class="mt-4 mb-5">
-<!--    {% endif %}-->
-
-            <div class="container mb-4">
-                <h1 class="font-weight-bold title"></h1>
-                <div class="row">
-                    <nav style="border-radius: 6px 6px 15px 15px;" class="navbar navbar-expand-lg navbar-light bg-white pl-2 pr-2">
-                        <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExplore" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExplore">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'index' %}">All</a>
-                                </li>
-                                {% for category in categoryes %}
-                                <li style="color:#fff;" class="nav-item">
-                                    <a class="nav-link" href="{% url 'category_list' category.slug %}">{{category.name}}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="card-columns">
-                        {% for post in posts %}
-                        <div class="card card-pin">
-                            <a href="{% url 'detail_post' post.id %}">
-                                <img class="card-img" src="{{post.img.url}}" alt="Card image">
-                            </a>
-                            <div class="card-info">
-							<span class="nav-link">
-                                <h6>{{post.title}}</h6>
-								<a style="text-decoration: none;" href="{% url 'detail-profile' post.user.id %}">
-								<div class="img_block align-middle" style="
+<main>
+    <div style="background: transparent;" class="container">
+        <ul class="header__list">
+            <li class="header__list-item">
+                <a href="{% url 'index' %}">All</a>
+            </li>
+            {% for category in categoryes %}
+            <li class="header__list-item">
+                <a href="{% url 'category_list' category.slug %}">{{category.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <section class="content">
+        <div class="container">
+            <div class="content__row">
+                {% for post in posts %}
+                <div class="content__card">
+                    <a style="display:block;" href="{% url 'detail_post' post.id %}">
+                        <img class="content__card-img"
+                             src="{{post.img.url}}" alt="">
+                    </a>
+                    <div class="content__user">
+                        <h3 class="content__user-title">
+                            {{post.title}}
+                        </h3>
+                        <div class="content__user-social">
+                            <div  style="
 								background: url({{ post.user.profile.image.url }});
 								width:40px;
 								height:40px;
@@ -64,42 +41,18 @@ Home
 								background-position: center;
 								background-size: cover;
 								border-radius: 100%;
-								"></div>
-								<span class="align-middle">
-								{% if post.user.profile.inst %}
-									<a style="text-decoration: none;" href="{{post.user.profile.inst}}">instagram.com</a>
-								{% else %}
-									{{post.user.username}}
-								{% endif %}
-								</span>
-								</a>
-							</span>
+								" class="header__admin-image content__user-image">
+
                             </div>
+                            <a href="{% url 'detail-profile' post.user.id %}" class="header__admin-link content__user-link">
+                                {{post.user.username}}
+                            </a>
                         </div>
-
-
-
-                        {% endfor %}
-                    </div>
-                    <div class="pagination">
-                        <span style="color:#fff;" class="step-links">
-                            {% if page_obj.has_previous %}
-                                <a href="?page=1">&laquo; first</a>
-                                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                            </span>
-
-                            {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                            {% endif %}
-                        </span>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-        </section>
+        </div>
+    </section>
 </main>
 {% endblock %}

@@ -1,94 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
 	{% load static %}
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>{%block title%}{% endblock %}</title>
-	<script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
-	<link rel="stylesheet" href="{% static 'css/app.css' %}">
-	<link rel="stylesheet" href="{% static 'css/theme.css' %}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IKIGAI</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myPosts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
+
 {% if request.user.is_authenticated %}
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-	<a class="navbar-brand font-weight-bolder mr-3" href="{% url 'index' %}"><img width="60px" src="{% static 'img/logo.png' %}"></a>
-	<a style="font-weight: bold;" class="navbar-brand font-weight-bolder mr-3" href="{% url 'index' %}">IKIGAI</a>
-	<button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarsDefault">
-		<ul style="width:80%;border-radius:10%;" class="navbar-nav mr-auto align-items-center">
-			<form class="bd-search hidden-sm-down">
-				<input type="text" class="form-control bg-graylight border-0 font-weight-bold" id="search-input" placeholder="Search..." autocomplete="off">
-				<div class="dropdown-menu bd-search-results" id="search-results">
-				</div>
-			</form>
-		</ul>
-		<ul style="border-radius:10%;" class="navbar-nav ml-auto align-items-right">
-			{% if request.user.is_authenticated %}
-			<li class="nav-item">
-				<span class="nav-link">
-					<a href="{% url 'detail-profile' user.id %}">
-					<div class="img_block align-middle" style="
-					background: url({{ user.profile.image.url }});
+<header class="header">
+    <div class="container">
+        <nav class="header__nav">
+            <div class="header__content">
+                <div class="header__content-logo">
+                    <a href="{% url 'index' %}"><img class="header__content-img" src="{% static 'images/logo.png' %}" alt=""></a>
+                </div>
+                <h1 class="header__content-title">
+                    <a href="{% url 'index' %}">IKIGAI</a>
+                </h1>
+                <form class="header__content-search">
+                    <label>
+                        <input class="header__content-input" type="search" placeholder="Search">
+                    </label>
+                </form>
+            </div>
+            <div class="header__admin">
+                <div style="background: url({{ user.profile.image.url }});
 					width:40px;
 					height:40px;
 					display: inline-block;
 					background-position: center;
 					background-size: cover;
 					border-radius: 100%;
-					"></div>
-					<span class="align-middle">{{user.username}}</span>
-					</a>
-				</span>
-			</li>
-			{% endif %}
-		</ul>
-		<ul class="navbar-nav align-items-center">
-			{% if request.user.is_authenticated %}
-			<li class="nav-item">
-				{% else %}
-				<a href="{% url 'login' %}" class="nav-item">Login</a>
-				{% endif %}
+					" class="header__admin-image">
 
-			</li>
+                </div>
+                <a href="{% url 'detail-profile' user.id %}" class="header__admin-link">
+					{{user.username}}
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
 
-			<li class="nav-item">
-				{% if request.user.is_authenticated %}
-
-				{% endif %}
-			</li>
-		</ul>
-	</div>
-</nav>
 {% endif %}
 {% block content %}
 
 {% endblock %}
-<script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/theme.js' %}"></script>
-<footer class="footer pt-5 pb-5 text-center">
-	<div class="container">
-		<div class="socials-media">
-			<ul class="list-unstyled">
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-facebook"></i></a></li>
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-twitter"></i></a></li>
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-instagram"></i></a></li>
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-google-plus"></i></a></li>
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-behance"></i></a></li>
-				<li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-dribbble"></i></a></li>
-			</ul>
-		</div>
-		<p>©  <span class="credits font-weight-bold">
-            <a target="_blank" class="text-dark" href="#"><u></u> by Abi&Peri</a>
-          </span>
-		</p>
-	</div>
+
+<footer class="footer">
+    <div class="container">
+        <nav class="footer__nav">
+            <ul class="footer__list">
+                <li class="footer__list-item">
+                    <i class="fab fa-js"></i>
+                </li>
+                <li class="footer__list-item">
+                    <i class="fab fa-react"></i>
+                </li>
+                <li class="footer__list-item">
+                    <i class="fab fa-node"></i>
+                </li>
+                <li class="footer__list-item">
+                    <i class="fab fa-html5"></i>
+                </li>
+            </ul>
+        </nav>
+        <p class="footer__devs">
+            Abi&Peri
+        </p>
+    </div>
 </footer>
+
 </body>
 </html>

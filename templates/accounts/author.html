@@ -1,22 +1,15 @@
 {% extends 'base.html' %}
 {% block title %} {{author.username}}{% endblock %}
 {% block content %}
-<main role="main">
 
-	{% if author.profile.bg %}
-	<div class="jumbotron border-round-0 " style="background-image:url({{author.profile.bg.url}});
-	background-position: left 50% top 30%;
-	background-size: cover;
-	height:500px;
-	">
-	</div>
-	{% else %}
-	<div class="jumbotron border-round-0 min-50vh" style="background-image:url(https://images.unsplash.com/photo-1522204657746-fccce0824cfd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=84b5e9bea51f72c63862a0544f76e0a3&auto=format&fit=crop&w=1500&q=80);">
-	</div>
-	{% endif %}
+<main>
+	<section class="admin">
+		<div class="admin__background">
 
-	<div style="width:100%" class="container mb-4">
-		<div class="" style="
+		</div>
+		<div class="container">
+			<div class="admin__block">
+				<div class="admin__image" style="
 					background: url({{ author.profile.image.url }});
 					width:170px;
 					height:170px;
@@ -26,74 +19,67 @@
 					border-radius: 100%;
 					margin-top: -125px;
 					"></div>
-		<h1 class="font-weight-bold title">{{author.username}}</h1>
-		<p style="display: inline-block">
-<!--			Проверка на био-->
+
+			</div>
+			<h2 class="admin__title">
+				{{author.username}}
+			</h2>
 			{% if author.profile.bio %}
-			{{author.profile.bio}}
+			<p class="admin__descr">
+				{{author.profile.bio}}
+			</p>
 			{% else %}
-			Биография отсутствует ...
-			{% endif %}
-<!--			Проверка на инст-->
-
-			{% if author.profile.inst %}
-			<a style="display:block; margin-top:2rem" href="{{author.profile.inst}}">instagram</a>
-			{% else %}
-
+			<p class="admin__descr">
+				Биография отсутствует
+			</p>
 			{% endif %}
 
-
-		</p>
-		{% if author.profile.id == user.profile.id  %}
-		<div style="text-align:center" class="right">
-			{% if author.username == 'admin' %}
-			<a  href="{% url 'category-create' %}"><span class="align-middle">
+			{% if author.profile.id == user.profile.id  %}
+			<div style="text-align:center" class="right">
+				{% if author.username == 'admin' %}
+				<a  href="{% url 'category-create' %}"><span class="align-middle">
 				Добавить категории
 			</span></a>
+				{% endif %}
+				<a style="margin-right: 1rem;margin-left: 1rem"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
+				<a style="margin-right: 1rem" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
+
+				<a  href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
+			</div>
 			{% endif %}
-			<a style="margin-right: 1rem;margin-left: 1rem"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
-			<a style="margin-right: 1rem" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
-
-			<a  href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
 		</div>
-		{% endif %}
-
-	</div>
-	<div {% if user.custom.bg %}
-             style="background: url({{ user.custom.bg.url }});
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            "
-             {% else %}
-
-             {% endif %}
-		 class="container-fluid mb-5">
-		<div class="row">
-			<div style="width:100%" class="card-columns">
+		</div>
+	</section>
+	<section class="myPosts">
+		<div class="container">
+			<h2 class="myPosts__title">
+				My posts
+			</h2>
+			<div class="content__row">
 				{% if profile_posts %}
 				{% for profile_post in profile_posts %}
-				<div class="card card-pin">
+				<div class="content__card">
 					<a href="{% url 'detail_post' profile_post.id %}">
-						<img class="card-img" src="{{profile_post.img.url}}" alt="Card image">
-					</a>
-					<div class="card-info">
-							<span class="nav-link">
-                                <h6>{{profile_post.title}}</h6>
-								<a style="text-decoration: none;" href="{% url 'detail-profile' profile_post.user.id %}">
-								<div class="img_block align-middle" style="
-								background: url({{ post.user.profile.image.url }});
+					<img class="content__card-img"
+						 src="{{profile_post.img.url}}" alt=""></a>
+					<div class="content__user">
+						<h3 class="content__user-title">
+							{{profile_post.title}}
+						</h3>
+						<div class="content__user-social">
+							<div style="background: url({{ profile_post.user.profile.image.url }});
 								width:40px;
 								height:40px;
 								display: inline-block;
 								background-position: center;
 								background-size: cover;
 								border-radius: 100%;
-								"></div>
-								<span class="align-middle">
-								</span>
-								</a>
-							</span>
+								" class="header__admin-image content__user-image">
+							</div>
+							<a href="{% url 'detail-profile' profile_post.user.id %}" class="header__admin-link content__user-link">
+								{{profile_post.user.username}}
+							</a>
+						</div>
 					</div>
 				</div>
 				{% endfor %}
@@ -102,7 +88,7 @@
 				{% endif %}
 			</div>
 		</div>
-	</div>
-
+	</section>
 </main>
+
 {% endblock %}

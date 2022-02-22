@@ -1,0 +1,27 @@
+.admin{
+    padding-bottom: 100px;
+}
+
+.admin__background {
+    width: 100%;
+    height: 50vh;
+    background: #e5e5e5;
+
+}
+
+
+.admin__block {
+    margin-top: 20px;
+}
+
+
+.admin__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+
+.admin__title {
+    margin: 10px 0 15px;
+}
