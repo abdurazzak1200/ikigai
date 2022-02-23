@@ -38,40 +38,47 @@
                         </h4>
                         <p>Нравится: {{post.likes.count}}</p>
                         <div class="posts__review">
-
-                            <a href="{% url 'like' post.id %}" class="posts__like">
-                                <i class="fas fa-thumbs-up"></i>
-                            </a>
+                            {% if request.user in post.likes.all %}
                             <a href="{% url 'like' post.id %}" class="posts__dislike">
                                 <i class="fas fa-thumbs-down"></i>
                             </a>
+                            {% else %}
+                            <a href="{% url 'like' post.id %}" class="posts__like">
+                                <i class="fas fa-thumbs-up"></i>
+                            </a>
+                            {% endif %}
                         </div>
 
 
 
 
 
-                        <div class="posts__commit">
-                            <div style="width:10%" class="posts__commit-foricon">
-                                <div style="background: url({{post.user.profile.image.url}});
-                                width:40px;
-                                height:40px;
+                        <h3 style="margin: 2rem 0 0.5rem;" class="mb-5">{{comments.count}} Комментариев</h3>
+                        <div style="width: 100%;">
+                            {% for comment in comments %}
+                            <div style="margin-bottom: 1rem;" class="posts__commit">
+                                <div style="width:10%" class="posts__commit-foricon">
+                                    <div style="background: url({{comment.user.profile.image.url}});
+                                width:60px;
+                                height:60px;
                                 display: inline-block;
                                 background-position: center;
                                 background-size: cover;
                                 border-radius: 100%;
                                 " class="posts__commit-icon">
+                                    </div>
+                                </div>
 
+                                <div style="width:90%" class="posts__commit-info">
+                                    <p class="posts__commit-user">
+                                        {{comment.user.username}}
+                                    </p>
+                                    <div class="posts__commit-input">
+                                        {{comment.comment}}
+                                    </div>
                                 </div>
                             </div>
-                            <div style="width:90%" class="posts__commit-info">
-                                <p class="posts__commit-user">
-                                    Дыкындыщ ХАХА Хихиев
-                                </p>
-                                <div class="posts__commit-input">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deserunt ex laboriosam molestiae perferendis porro quae quos tenetur, vitae voluptates! Asperiores aspernatur atque aut dolor dolore error exercitationem illo impedit ipsam ipsum pariatur, quasi quod, tempore. Et hic ipsum magnam quis repellendus voluptas. A ab accusamus aperiam assumenda atque aut autem blanditiis consectetur culpa cupiditate delectus deleniti dolore eius, eligendi error eveniet ex illum in magni molestiae, molestias nam non omnis perferendis placeat praesentium quae quaerat recusandae repellendus repudiandae rerum, similique temporibus voluptatum. Aperiam asperiores aspernatur dicta eius eum harum labore nam natus porro quae quo rem, repellat tenetur ullam unde veniam vero voluptatem voluptatibus. Minus pariatur suscipit voluptas voluptatibus. A, ab accusantium animi deserunt doloribus dolorum earum fuga magni maxime officia, quae quo, quod quos. Consequatur eaque fuga hic ipsa, laborum laudantium magni minus natus nisi non nulla obcaecati odio odit porro provident quas quidem quo rem rerum sed sit suscipit tempore. Ab accusamus adipisci aperiam aspernatur consequatur cum dolore eaque earum eius et, facilis harum laudantium nam nisi possimus quod quos repudiandae rerum sit veritatis? Ipsa natus, placeat. Aliquam amet aperiam commodi consequuntur ducimus earum eos et explicabo ipsum, iure libero perferendis recusandae tempora vel velit vitae voluptas.
-                                </div>
-                            </div>
+                            {% endfor %}
 
                         </div>
                     </div>

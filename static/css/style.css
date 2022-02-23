@@ -105,6 +105,10 @@ a {
 }
 @media  (max-width: 1000px) {
 
+    .posts__commit-foricon{
+       margin-right: 3rem;
+    }
+
     #id_username {
         width: 40%;
     }
@@ -151,6 +155,10 @@ a {
 
     .content__card{
         width: calc(25% - 22.5px);
+    }
+
+    .posts__commit-foricon{
+       margin-right: 3rem;
     }
 
     .admin__background {
@@ -201,6 +209,10 @@ a {
 
     .content__card{
         width: calc(50% - 15px);
+    }
+
+  .posts__commit-foricon{
+       margin-right: 3rem;
     }
 
     #id_username {
@@ -254,6 +266,9 @@ a {
     .header__content-input {
         height: 35px;
     }
+   .posts__commit-foricon{
+       margin-right: 3rem;
+    }
 
     #id_username {
         width: 80%;
@@ -301,6 +316,10 @@ a {
     }
     .header__admin {
         column-gap: 10px;
+    }
+
+   .posts__commit-foricon{
+       margin-right: 3rem;
     }
 
     #id_username {
@@ -358,6 +377,10 @@ a {
         width: 145px;
         margin: 10px 0;
     }
+
+   .posts__commit-foricon{
+       margin-right: 3rem;
+    }
 }
 
 @media (max-width: 375px) {
@@ -403,6 +426,9 @@ a {
     .footer__list-item:last-child {
         margin-right: 0;
     }
+   .posts__commit-foricon{
+       margin-right: 3rem;
+    }
 
 }
 
@@ -418,6 +444,9 @@ a {
     .header__content-input {
         width: 145px;
         margin: 10px 0;
+    }
+    .posts__commit-foricon{
+       margin-right: 3rem;
     }
 }
 

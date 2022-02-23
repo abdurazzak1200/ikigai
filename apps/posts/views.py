@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import Post, Category
+from .models import Post, Category, Comment
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib import admin
@@ -46,6 +46,11 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView,self).get_context_data(**kwargs)
+        comments = Comment.objects.filter(post=self.get_object())
+        context['comments'] = comments
+        return context
 
 
 class PostCreatedView(LoginRequiredMixin, CreateView):
