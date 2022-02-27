@@ -21,6 +21,11 @@
                         <a href="{% url 'detail-profile' post.user.id %}" class="header__admin-link posts__user-link">
                             {{post.user}}
                         </a>
+                        {% if post.user == request.user %}
+                        <a href="{% url 'edit-post' post.id %}">
+                            edit
+                        </a>
+                        {% endif %}
                     </div>
                     <img class="posts__card-img"
                          src="{{post.img.url}}" alt="">

@@ -23,12 +23,14 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y6xbkjkfz-(wehbf=3vuh@ev9w$86-@h6eyei$211b@^1*kfsb'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY",
+                       default='django-insecure-y6xbkjkfz-(wehbf=3vuh@ev9w$86-@h6eyei$211b@^1*kfsb')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", default=True)
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -84,12 +86,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pinterest_list',
-        'PASSWORD': 'admin',
-        'USER': 'user_pinterest',
-        'HOST': '127.0.0.1',
-        'PORT': '5434',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("POSTGRES_DB", default='pinterest_list'),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD", default='admin'),
+        'USER': os.getenv("POSTGRES_USER", default='user_pinterest'),
+        'HOST': os.getenv("POSTGRES_HOST", default='127.0.0.1'),
+        'PORT': os.getenv("POSTGRES_PORT", default='5434'),
     }
 }
 

@@ -4,9 +4,18 @@
 
 <main>
 	<section class="admin">
+		{% if author.profile.bg.url %}
+		<div class="admin__background" style="background: url('{{ author.profile.bg.url }}');
+												background-position: center center;
+												background-size: cover;
+												">
+
+		</div>
+		{% else %}
 		<div class="admin__background">
 
 		</div>
+		{% endif %}
 		<div class="container">
 			<div class="admin__block">
 				<div class="admin__image" style="

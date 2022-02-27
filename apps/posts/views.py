@@ -35,9 +35,6 @@ class AllPostView(LoginRequiredMixin, ListView, View):
             return queryset
         queryset = self.model.objects.filter(archived=False)
         return queryset
-    # def get_context_data(self, **kwargs):
-    #     context = super(AllPostView, self).get_context_data(**kwargs)
-    #     context = ['search_form'] = self.form_class()
 
 
 
@@ -75,6 +72,7 @@ class CategoryCreatedView(LoginRequiredMixin, CreateView):
 
 class UpdatePost(UpdateView):
     model = Post
+    template_name = 'posts/post_edit.html'
     fields = ['category', 'title', 'description', 'archived']
     success_url = reverse_lazy('index')
 
