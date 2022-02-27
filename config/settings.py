@@ -91,7 +91,7 @@ DATABASES = {
         'PASSWORD': os.getenv("POSTGRES_PASSWORD", default='admin'),
         'USER': os.getenv("POSTGRES_USER", default='user_pinterest'),
         'HOST': os.getenv("POSTGRES_HOST", default='127.0.0.1'),
-        'PORT': os.getenv("POSTGRES_PORT", default='5434'),
+        'PORT': os.getenv("POSTGRES_PORT", default='5432'),
     }
 }
 
