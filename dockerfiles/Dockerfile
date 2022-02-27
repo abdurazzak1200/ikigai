@@ -19,4 +19,4 @@ COPY . .
 
 EXPOSE 8000
 
-ENTRYPOINT ["sh", "./dockerfiles/app/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "./dockerfiles/docker-entrypoint.sh"]
