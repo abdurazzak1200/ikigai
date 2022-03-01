@@ -21,10 +21,10 @@
                         <a href="{% url 'detail-profile' post.user.id %}" class="header__admin-link posts__user-link">
                             {{post.user}}
                         </a>
-                        {% if post.user == request.user %}
-                        <a href="{% url 'edit-post' post.id %}">
-                            edit
-                        </a>
+                            {% if post.user == request.user %}
+                            <a href="{% url 'edit-post' post.id %}">
+                                изменить
+                            </a>
                         {% endif %}
                     </div>
                     <img class="posts__card-img"
@@ -84,6 +84,12 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            <div class="form-block">
+                                <form action="post">
+                                    {{form}}
+                                    <button style="margin-top: 3rem" type="submit" class="btn btn-primary">Отправить</button>
+                                </form>
+                            </div>
 
                         </div>
                     </div>

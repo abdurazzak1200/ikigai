@@ -1,21 +1,15 @@
 {% extends 'base.html' %}
 {% block title %} {{author.username}}{% endblock %}
 {% block content %}
-
+{% load static %}
 <main>
 	<section class="admin">
-		{% if author.profile.bg.url %}
 		<div class="admin__background" style="background: url('{{ author.profile.bg.url }}');
 												background-position: center center;
 												background-size: cover;
 												">
 
 		</div>
-		{% else %}
-		<div class="admin__background">
-
-		</div>
-		{% endif %}
 		<div class="container">
 			<div class="admin__block">
 				<div class="admin__image" style="
@@ -28,7 +22,6 @@
 					border-radius: 100%;
 					margin-top: -125px;
 					"></div>
-
 			</div>
 			<h2 class="admin__title">
 				{{author.username}}
@@ -54,6 +47,7 @@
 				<a style="margin: 1rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
 				<a style="margin: 2rem 1rem;1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
 
+				<a style="margin: 2rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block" href="{% url 'archived_post' %}"><span class="align-middle">Архивы</span></a>
 				<a style="margin: 2rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block" href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
 			</div>
 			{% endif %}

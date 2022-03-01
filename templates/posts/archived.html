@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title%}
+Archived
+{% endblock %}
+{% block content %}
+
+
+<main>
+    <div class="container">
+        <h3>Архивированные посты</h3>
+    </div>
+    <section class="content">
+        <div class="container">
+
+            <div class="content__row">
+                {% for post in posts %}
+                <div class="content__card">
+                    <a style="display:block;" href="{% url 'detail_post' post.id %}">
+                        <img class="content__card-img"
+                             src="{{post.img.url}}" alt="">
+                    </a>
+                    <div class="content__user">
+                        <h3 class="content__user-title">
+                            {{post.title}}
+                        </h3>
+                        <div class="content__user-social">
+                            <div  style="
+								background: url({{ post.user.profile.image.url }});
+								width:40px;
+								height:40px;
+								display: inline-block;
+								background-position: center;
+								background-size: cover;
+								border-radius: 100%;
+								" class="header__admin-image content__user-image">
+
+                            </div>
+                            <a href="{% url 'detail-profile' post.user.id %}" class="header__admin-link content__user-link">
+                                {{post.user.username}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

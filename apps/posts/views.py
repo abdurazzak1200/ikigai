@@ -3,7 +3,10 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic.edit import ModelFormMixin
+
 from .models import Post, Category, Comment
+from .forms import CommentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib import admin
@@ -38,16 +41,24 @@ class AllPostView(LoginRequiredMixin, ListView, View):
 
 
 
-class PostDetailView(LoginRequiredMixin, DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView, ModelFormMixin):
     template_name = 'post.html'
     model = Post
     context_object_name = 'post'
+    form_class = CommentForm
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView,self).get_context_data(**kwargs)
         comments = Comment.objects.filter(post=self.get_object())
         context['comments'] = comments
         return context
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user.id
+        instance.post = self.object.id
+        instance.save()
+        return super(PostDetailView, self).form_valid(form)
 
 
 class PostCreatedView(LoginRequiredMixin, CreateView):
@@ -70,9 +81,29 @@ class CategoryCreatedView(LoginRequiredMixin, CreateView):
         return super(CategoryCreatedView, self).form_valid(form)
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = 'posts/post_edit.html'
     fields = ['category', 'title', 'description', 'archived']
     success_url = reverse_lazy('index')
+
+
+class AllArchivedPostView(LoginRequiredMixin, ListView, View):
+    template_name = 'posts/archived.html'
+    model = Post
+    form_class = 1
+    context_object_name = 'posts'
+    paginate_by = 20
+    def get_queryset(self):
+        queryset = self.model.objects.filter(archived=True, user=self.request.user.id)
+        return queryset
+
+class ChangeArchive(LoginRequiredMixin, UpdateView, ModelFormMixin):
+    model = Post
+    fields = ['archived']
+
+
+    def get_success_url(self):
+        return redirect('archived_post')
+
 
