@@ -44,16 +44,17 @@
 			{% endif %}
 
 			{% if author.profile.id == user.profile.id  %}
-			<div style="text-align:center" class="right">
+			<div style="margin: 3rem 0" class="right">
 				{% if author.username == 'admin' %}
-				<a  href="{% url 'category-create' %}"><span class="align-middle">
-				Добавить категории
-			</span></a>
+				<a style="margin: 1rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff" href="{% url 'category-create' %}"><span class="align-middle">
+					Добавить категории
+					</span>
+				</a>
 				{% endif %}
-				<a style="margin-right: 1rem;margin-left: 1rem"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
-				<a style="margin-right: 1rem" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
+				<a style="margin: 1rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block"  href="{% url 'post-create' %}"><span class="align-middle">Добавить пост</span></a>
+				<a style="margin: 2rem 1rem;1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block" href="{% url 'update_profile' user.profile.id %}"><span class="align-middle">Изменить профиль</span></a>
 
-				<a  href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
+				<a style="margin: 2rem 1rem;background:#4CAF50; padding: 7px 15px; border-radius:10px; color: #fff; display: inline-block" href="{% url 'logout' %}"><span class="align-middle">Выйти</span></a>
 			</div>
 			{% endif %}
 		</div>
