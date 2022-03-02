@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
@@ -41,24 +41,36 @@ class AllPostView(LoginRequiredMixin, ListView, View):
 
 
 
-class PostDetailView(LoginRequiredMixin, DetailView, ModelFormMixin):
+class PostDetailView(LoginRequiredMixin, DetailView):
     template_name = 'post.html'
     model = Post
     context_object_name = 'post'
-    form_class = CommentForm
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView,self).get_context_data(**kwargs)
         comments = Comment.objects.filter(post=self.get_object())
         context['comments'] = comments
+        context['form'] = CommentForm
         return context
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.user = self.request.user.id
-        instance.post = self.object.id
-        instance.save()
-        return super(PostDetailView, self).form_valid(form)
+
+class AddCommentView(LoginRequiredMixin, CreateView):
+
+    def get_success_url(self):
+        return reverse('post', kwargs = {'id':self.object.kwargs})
+
+    def post(self, request, pk, *args, **kwargs):
+        form = CommentForm(request.POST)
+        user = request.user
+        post = Post.objects.get(id=pk)
+        if form.is_valid():
+            Comment.objects.update_or_create(
+                user=user,
+                post=post,
+                comment=request.POST.get('comment')
+            )
+            return redirect(f'/post/{post.id}/')
+        return redirect(f'/post/{post.id}/')
 
 
 class PostCreatedView(LoginRequiredMixin, CreateView):

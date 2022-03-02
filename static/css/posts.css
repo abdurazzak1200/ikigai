@@ -63,3 +63,20 @@
 .posts__commit-icon {
 
 }
+
+.form-block label {
+    display: none;
+}
+
+.form-block button {
+    padding: 7px 15px;
+    margin: 1rem auto;
+    display: block;
+}
+
+#id_comment {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    height: 3rem;
+}

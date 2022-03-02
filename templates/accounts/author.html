@@ -4,21 +4,13 @@
 {% load static %}
 <main>
 	<section class="admin">
-		{% if author.profile.bg.url %}
 		<div class="admin__background" style="background: url('{{ author.profile.bg.url }}');
 												background-position: center center;
 												background-size: cover;
 												">
 
 		</div>
-		{% else %}
-		<div class="admin__background" style="background: url('{% static 'images/user-bg.jpeg' %}');
-												background-position: center center;
-												background-size: cover;
-												">
-		{% endif %}
 		<div class="container">
-			{% if author.profile.image.url %}
 			<div class="admin__block">
 				<div class="admin__image" style="
 					background: url({{ author.profile.image.url }});
@@ -31,20 +23,6 @@
 					margin-top: -125px;
 					"></div>
 			</div>
-			{% else %}
-			<div class="admin__block">
-				<div class="admin__image" style="
-					background: url({% static 'images/default.png' %});
-					width:170px;
-					height:170px;
-					display: inline-block;
-					background-position: center;
-					background-size: cover;
-					border-radius: 100%;
-					margin-top: -125px;
-					"></div>
-			</div>
-			{% endif %}
 			<h2 class="admin__title">
 				{{author.username}}
 			</h2>

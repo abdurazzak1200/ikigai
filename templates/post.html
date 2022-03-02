@@ -63,20 +63,22 @@
                             {% for comment in comments %}
                             <div style="margin-bottom: 1rem;" class="posts__commit">
                                 <div style="width:10%" class="posts__commit-foricon">
-                                    <div style="background: url({{comment.user.profile.image.url}});
-                                width:60px;
-                                height:60px;
-                                display: inline-block;
-                                background-position: center;
-                                background-size: cover;
-                                border-radius: 100%;
-                                " class="posts__commit-icon">
-                                    </div>
+                                    <a href="{% url 'detail-profile' comment.user.id %}">
+                                        <div style="background: url({{comment.user.profile.image.url}});
+                                            width:60px;
+                                            height:60px;
+                                            display: inline-block;
+                                            background-position: center;
+                                            background-size: cover;
+                                            border-radius: 100%;
+                                            " class="posts__commit-icon">
+                                                </div>
+                                    </a>
                                 </div>
 
                                 <div style="width:90%" class="posts__commit-info">
                                     <p class="posts__commit-user">
-                                        {{comment.user.username}}
+                                        <a href="{% url 'detail-profile' comment.user.id %}">{{comment.user}}</a>
                                     </p>
                                     <div class="posts__commit-input">
                                         {{comment.comment}}
@@ -85,9 +87,13 @@
                             </div>
                             {% endfor %}
                             <div class="form-block">
-                                <form action="post">
+
+
+                                <form action="{% url 'add_comment' post.id %}" enctype="multiparty/form-data" method="post">
+                                    <h3 style="margin-bottom:1rem">Оставить коммкентарий: </h3>
                                     {{form}}
-                                    <button style="margin-top: 3rem" type="submit" class="btn btn-primary">Отправить</button>
+                                    {% csrf_token %}
+                                    <button style="" type="submit" class="btn btn-primary">Отправить</button>
                                 </form>
                             </div>
 
