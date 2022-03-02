@@ -25,10 +25,19 @@ def like_post(request, post_id):
 class AllPostView(LoginRequiredMixin, ListView, View):
     template_name = 'index.html'
     model = Post
-    form_class = 1
     context_object_name = 'posts'
     paginate_by = 20
     def get_queryset(self):
+        queryset = self.model.objects.filter(archived=False)
+        search_query = self.request.GET.get('search', '')
+        if search_query:
+            queryset = self.model.objects.filter(title__icontains=self.request.GET.get('search', ''),
+                                                 archived=False
+                                                 ).filter(
+                                                    user__username__icontains=self.request.GET.get('search', ''),
+                                                    archived=False
+                                                )
+            return queryset
         category_slug = self.kwargs.get('category_slug')
         if category_slug:
             category = get_object_or_404(Category, slug=category_slug)
@@ -36,8 +45,11 @@ class AllPostView(LoginRequiredMixin, ListView, View):
                 archived=False,
                 category=category)
             return queryset
-        queryset = self.model.objects.filter(archived=False)
         return queryset
+    def get_context_data(self, *args, **kwargs):
+        context = super(AllPostView, self).get_context_data(*args, **kwargs)
+        context['search'] = self.request.GET.get('search', '')
+        return context
 
 
 
@@ -55,9 +67,6 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 
 class AddCommentView(LoginRequiredMixin, CreateView):
-
-    def get_success_url(self):
-        return reverse('post', kwargs = {'id':self.object.kwargs})
 
     def post(self, request, pk, *args, **kwargs):
         form = CommentForm(request.POST)
