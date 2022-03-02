@@ -33,10 +33,7 @@ class AllPostView(LoginRequiredMixin, ListView, View):
         if search_query:
             queryset = self.model.objects.filter(title__icontains=self.request.GET.get('search', ''),
                                                  archived=False
-                                                 ).filter(
-                                                    user__username__icontains=self.request.GET.get('search', ''),
-                                                    archived=False
-                                                )
+                                                 )
             return queryset
         category_slug = self.kwargs.get('category_slug')
         if category_slug:
