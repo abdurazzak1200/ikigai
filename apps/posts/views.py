@@ -132,15 +132,3 @@ class ChangeArchive(LoginRequiredMixin, View):
         return redirect(f'/accounts/detail-profile/{user.id}/')
 
 
-
-
-
-def make_archived(request,pk):
-    try:
-        post=Post.objects.get(pk=pk)
-        post.archived = True
-        post.save()
-    except Post.DoestNotExist:
-        pass
-    return redirect('')
-

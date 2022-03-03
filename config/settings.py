@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
+_PATH = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
@@ -132,14 +132,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# STATICFILES_DIRS = [
-#     "/Users/test/Desktop/pinterest/ikigai/static/",
-# ]
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(_PATH, 'files', 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(_PATH, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 LOGIN_URL = "login"
 
 # Default primary key field type
