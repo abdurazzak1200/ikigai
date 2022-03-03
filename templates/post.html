@@ -22,10 +22,19 @@
                             {{post.user}}
                         </a>
                             {% if post.user == request.user %}
-                            <a href="{% url 'edit-post' post.id %}">
-                                изменить
-                            </a>
-                        {% endif %}
+                                <a href="{% url 'edit-post' post.id %}">
+                                    изменить
+                                </a>
+                                {% if post.archived == False %}
+                                    <a href="{% url 'change_archived' post.id %}">
+                                        В архив
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'change_archived' post.id %}">
+                                        Показать в профиле
+                                    </a>
+                                {% endif %}
+                            {% endif %}
                     </div>
                     <img class="posts__card-img"
                          src="{{post.img.url}}" alt="">

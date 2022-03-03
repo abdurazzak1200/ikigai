@@ -116,12 +116,31 @@ class AllArchivedPostView(LoginRequiredMixin, ListView, View):
         queryset = self.model.objects.filter(archived=True, user=self.request.user.id)
         return queryset
 
-class ChangeArchive(LoginRequiredMixin, UpdateView, ModelFormMixin):
+class ChangeArchive(LoginRequiredMixin, View):
     model = Post
-    fields = ['archived']
+
+    def get(self, *args, **kwargs):
+        user = self.request.user
+        pk = self.kwargs.get('pk')
+        post = self.model.objects.get(id=pk)
+        if post.archived == False:
+            post.archived = True
+            post.save()
+        else:
+            post.archived = False
+            post.save()
+        return redirect(f'/accounts/detail-profile/{user.id}/')
 
 
-    def get_success_url(self):
-        return redirect('archived_post')
 
+
+
+def make_archived(request,pk):
+    try:
+        post=Post.objects.get(pk=pk)
+        post.archived = True
+        post.save()
+    except Post.DoestNotExist:
+        pass
+    return redirect('')
 
