@@ -77,9 +77,11 @@
                                 </div>
 
                                 <div style="width:90%" class="posts__commit-info">
-                                    <p class="posts__commit-user">
-                                        <a href="{% url 'detail-profile' comment.user.id %}">{{comment.user}}</a>
-                                    </p>
+                                    <div style="display:flex; justify-content:space-between;" class="posts__commit-user">
+                                        <p><a href="{% url 'detail-profile' comment.user.id %}">{{comment.user}}</a></p>
+                                        <p>{{comment.commented_time}}</p>
+                                    </div>
+
                                     <div class="posts__commit-input">
                                         {{comment.comment}}
                                     </div>
