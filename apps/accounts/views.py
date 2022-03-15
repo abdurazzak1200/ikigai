@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views import View
+
 from .models import Profile
 from posts.models import Post
 from django.contrib.auth.models import User
@@ -12,10 +14,16 @@ from django.views.generic.edit import FormView, UpdateView, CreateView
 
 
 
-class ProfileLogin(LoginView):
+class ProfileLogin(LoginView, View):
     template_name = 'accounts/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProfileLogin, self).get_context_data(*args, **kwargs)
+        context['users'] = User.objects.all()
+        return context
+
     def get_success_url(self):
       return reverse_lazy('index')
 

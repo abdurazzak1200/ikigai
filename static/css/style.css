@@ -7,6 +7,32 @@
     font-family: 'Bitter', serif;
     font-weight: 300;
 }
+.block__section {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	margin: 0;
+	padding: 0;
+	flex-direction: row;
+}
+
+.block_text__span {
+	background: #29c5e5;
+	color: #29c5e5;
+	padding: 0 8px;
+	margin-right: 6px;
+	height: 10px;
+}
+
+.title_pattern {
+	height: 14px;
+	margin-top: 29px;
+}
+
+.block {
+	flex: 1 0;
+	width: 50%;
+}
 
 .container {
     width: 100%;
@@ -19,18 +45,23 @@ a {
     color: black;
 }
 
-
-
 #id_username {
     display: block;
     width: 20%;
     margin: 1rem auto;
     padding: 3px 6px;
 }
+
+.block__section #id_username {
+    display: block;
+    width: 60%;
+    margin: 1rem 0;
+    padding: 3px 6px;
+}
 #id_password {
     display: block;
     width: 20%;
-    margin: 1rem auto;
+    margin: 1rem 0;
     padding: 3px 6px;
 }
 #id_password1 {

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	{% load static %}
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -24,10 +24,11 @@
 </head>
 <body>
 
-{% if request.user.is_authenticated %}
 <header class="header">
     <div class="container">
         <nav class="header__nav">
+
+            {% if request.user.is_authenticated %}
             <div class="header__content">
                 <div class="header__content-logo">
                     <a href="{% url 'index' %}"><img class="header__content-img" src="{% static 'images/logo.png' %}" alt=""></a>
@@ -37,32 +38,44 @@
                 </h1>
                 <form name="filter" method="get" action="{% url 'index' %}" class="header__content-search">
 
-                        <input required="" name="search" class="header__content-input" type="search" placeholder="Search">
-                        <button type="submit">
+                    <input required="" name="search" class="header__content-input" type="search" placeholder="Search">
+                    <button type="submit">
 
-                        </button>
+                    </button>
 
                 </form>
             </div>
-            <div class="header__admin">
-                <div style="background: url({{ user.profile.image.url }});
-					width:40px;
-					height:40px;
-					display: inline-block;
-					background-position: center;
-					background-size: cover;
-					border-radius: 100%;
-					" class="header__admin-image">
+            {% else %}
+            <div class="header__content">
+                <div class="header__content-logo">
+                    <a href="#"><img class="header__content-img" src="{% static 'images/logo.png' %}" alt=""></a>
                 </div>
-                <a href="{% url 'detail-profile' user.id %}" class="header__admin-link">
-					{{user.username}}
-                </a>
+                <h1 class="header__content-title">
+                    <a href="#">IKIGAI</a>
+                </h1>
             </div>
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+                <div class="header__admin">
+                    <div style="background: url({{ user.profile.image.url }});
+                        width:40px;
+                        height:40px;
+                        display: inline-block;
+                        background-position: center;
+                        background-size: cover;
+                        border-radius: 100%;
+                        " class="header__admin-image">
+                    </div>
+                    <a href="{% url 'detail-profile' user.id %}" class="header__admin-link">
+                        {{user.username}}
+                    </a>
+                </div>
+            {% endif %}
         </nav>
     </div>
 </header>
 
-{% endif %}
 {% block content %}
 
 {% endblock %}

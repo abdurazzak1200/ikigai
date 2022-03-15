@@ -4,16 +4,23 @@
 <main style="margin-top:7rem;" role="main">
 
 
-    <section>
-        <div class="info">
+    <div class="container">
+        <div class="block__section">
+            <div class="block">
+                <div style="padding: 0 15px" class="block_text">
+                    <p style="text-align: right;margin-bottom:1rem">Количество пользователей: {{users.count}}</p>
+                    <h3 style="margin-bottom:1rem">Доброго времени суток!</h3>
+                    <p>IKIGAI - японское понятие, означающее ощущение собственного предназначения в жизни</p>
+                </div>
 
-        </div>
-        <div style="text-align:center">
-            <h1 class="font-weight-bold title">Войти</h1>
-            <form action="" method="POST" enctype="multipart/form-data">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input style="
+            </div>
+            <div class="block">
+                <div class="block_text">
+                    <h1 style="margin-bottom: 0.5rem" class="font-weight-bold title">Войти</h1>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <input style="
                         background-color: #4CAF50; /* Green */
                         border: none;
                         color: white;
@@ -24,10 +31,13 @@
                         font-size: 16px;
                         border-radius:10px;
                         " type="submit" value="Войти">
-            </form>
-            <h5 style="margin-top: 3rem">У вас нет аккаунта? <a style="color:#4CAF50" href="{% url 'register' %}">Регистрация</a></h5>
+                    </form>
+                    <p style="margin-top: 2rem">Нет аккаунта? <a style="color: #4CAF50;" href="{% url 'register' %}">Регистрация</a></p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
 </main>
 {% endblock %}
+
