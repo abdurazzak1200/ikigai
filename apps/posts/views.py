@@ -26,7 +26,7 @@ class AllPostView(LoginRequiredMixin, ListView, View):
     template_name = 'index.html'
     model = Post
     context_object_name = 'posts'
-    paginate_by = 20
+    paginate_by = 15
     def get_queryset(self):
         queryset = self.model.objects.filter(archived=False)
         search_query = self.request.GET.get('search', '')

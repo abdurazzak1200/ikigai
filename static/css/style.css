@@ -45,6 +45,18 @@ a {
     color: black;
 }
 
+.register_form ul{
+    display:none;
+}
+.register_form label {
+    display: inline-block;
+    margin: 1rem 0 5px 0;
+}
+.register_form .errorlist{
+    display: inline-block;
+    color: red;
+}
+
 #id_username {
     display: block;
     width: 20%;
