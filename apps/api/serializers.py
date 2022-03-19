@@ -6,26 +6,22 @@ from posts.models import Post, Category, Comment
 class UsersSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['id', 'username']
 
 
 class CategorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name', 'slug']
+        fields = ['id', 'name', 'slug']
 
 
-class AllPostSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+class PostSerializer(serializers.ModelSerializer):
+    user = UsersSerializers(read_only=False)
     category = CategorySerializers(read_only=True)
 
     class Meta:
         model = Post
-        fields = ['user', 'category', 'title', 'img', 'description', 'likes', 'archived', 'created']
+        fields = ['id', 'user', 'category', 'title', 'img', 'description', 'likes', 'archived', 'created']
 
 
-class PostCreateSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Post
-        exclude = ('user', 'category', 'title', 'img', 'description', 'likes', 'archived', 'created')
