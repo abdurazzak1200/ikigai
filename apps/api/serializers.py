@@ -1,28 +1,17 @@
-from rest_framework import  serializers
-from django.contrib.auth.models import User
-from posts.models import Post, Category, Comment
-from follow.models import Follower
+from rest_framework import serializers
+from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
 
-
-class UsersSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username']
-
-
-class CategorySerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ['id', 'name', 'slug']
+from posts.models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    user = UsersSerializers(read_only=False)
-    category = CategorySerializers(read_only=True)
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Post
-        fields = ['id', 'user', 'category', 'title', 'img', 'description', 'likes', 'archived', 'created']
+        fields = "__all__"
+
 
 
 
