@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
     'api.apps.ApiConfig',
+    'follow.apps.FollowConfig',
+
 
     'rest_framework',
 
@@ -137,9 +139,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-    "/Users/test/Desktop/pinterest/ikigai/static/",
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 

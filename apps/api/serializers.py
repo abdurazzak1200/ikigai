@@ -1,6 +1,7 @@
 from rest_framework import  serializers
 from django.contrib.auth.models import User
 from posts.models import Post, Category, Comment
+from follow.models import Follower
 
 
 class UsersSerializers(serializers.ModelSerializer):
@@ -25,3 +26,9 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 
+class UserByFollowerSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('id', 'user', 'image')

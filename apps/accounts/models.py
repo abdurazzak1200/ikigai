@@ -29,16 +29,3 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
-#
-# class Follow(models.Model):
-#     user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name='profile')
-#     private_account = models.BooleanField(default=False)
-#     followers = models.ManyToManyField('self', blank=True, related_name='user_followers', symmetrical=False)
-#     following = models.ManyToManyField('self', blank=True, related_name='user_following', symmetrical=False)
-#     panding_request = models.ManyToManyField('self', blank=True, related_name='pandingRequest', symmetrical=False)
-#     blocked_user = models.ManyToManyField('self', blank=True, related_name='user_blocked', symmetrical=False)
-#     created_date = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return '%s' % (self.user)
-
