@@ -4,8 +4,10 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from .serializers import (
     PostSerializer,
+    CommentsSerializer,
 )
 from posts.models import Post, Category
+from comments.models import Comment
 from rest_framework.response import  Response
 from rest_framework import status, generics
 
@@ -19,11 +21,16 @@ class PostAPIListPagination(PageNumberPagination):
 class PostAPIList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, IsAuthenticatedOrReadOnly)
     pagination_class = PostAPIListPagination
 
 
 class PostAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAuthenticated,)
+
+
+class CommentsAPI(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentsSerializer

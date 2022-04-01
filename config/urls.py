@@ -22,7 +22,7 @@ urlpatterns = [
     path('qwerty/', admin.site.urls),
     path('api/', include('api.urls')),
     path('accounts/', include('accounts.urls')),
-    path('follow/', include('follow.urls')),
+    # path('follow/', include('follow.urls')),
     path('', include('posts.urls')),
 
 ]

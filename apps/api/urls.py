@@ -14,5 +14,6 @@ urlpatterns = [
     path('post-update/<int:pk>/', PostAPIUpdate.as_view()),
     path('auth/', include('djoser.urls')),  # new
     re_path(r'^auth/', include('djoser.urls.authtoken')),
+    path('comments/adik/', CommentsAPI.as_view())
 
 ]

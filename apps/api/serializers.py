@@ -3,6 +3,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 
 from posts.models import Post
+from comments.models import Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -15,9 +16,8 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 
-class UserByFollowerSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(read_only=True)
+class CommentsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = User
-        fields = ('id', 'user', 'image')
+        model = Comment
+        fields = ('username', 'text')
